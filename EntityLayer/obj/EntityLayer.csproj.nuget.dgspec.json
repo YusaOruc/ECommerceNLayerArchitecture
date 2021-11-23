@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Yusa\\source\\repos\\ECommerceNew\\EntityLayer\\EntityLayer.csproj": {}
+    "C:\\Users\\Yusa\\Desktop\\ECommerceNLayerArchitecture\\EntityLayer\\EntityLayer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Yusa\\source\\repos\\ECommerceNew\\EntityLayer\\EntityLayer.csproj": {
+    "C:\\Users\\Yusa\\Desktop\\ECommerceNLayerArchitecture\\EntityLayer\\EntityLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Yusa\\source\\repos\\ECommerceNew\\EntityLayer\\EntityLayer.csproj",
+        "projectUniqueName": "C:\\Users\\Yusa\\Desktop\\ECommerceNLayerArchitecture\\EntityLayer\\EntityLayer.csproj",
         "projectName": "EntityLayer",
-        "projectPath": "C:\\Users\\Yusa\\source\\repos\\ECommerceNew\\EntityLayer\\EntityLayer.csproj",
+        "projectPath": "C:\\Users\\Yusa\\Desktop\\ECommerceNLayerArchitecture\\EntityLayer\\EntityLayer.csproj",
         "packagesPath": "C:\\Users\\Yusa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Yusa\\source\\repos\\ECommerceNew\\EntityLayer\\obj\\",
+        "outputPath": "C:\\Users\\Yusa\\Desktop\\ECommerceNLayerArchitecture\\EntityLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

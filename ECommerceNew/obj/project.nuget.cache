@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QSzD34Z8WhEpBl+Ii7KuXMwXkEZv+alaKQ18HjRXdgO3v/7RIjef/lvfajVBy0BezmgAVRB+4KtQUQdVEI0mvA==",
+  "dgSpecHash": "ioBIpGguzB6Fi7FG30lMdsCFv9/7af5nRBjv/QD3R2Rwfrktv6RtZ+mFHZ8u8I58Z96cYibcz5T28dOE0gcNGg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Yusa\\source\\repos\\ECommerceNew\\ECommerceNew\\ECommerceNew.csproj",
+  "projectFilePath": "C:\\Users\\Yusa\\Desktop\\ECommerceNLayerArchitecture\\ECommerceNew\\ECommerceNew.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Yusa\\.nuget\\packages\\fluentvalidation\\10.3.4\\fluentvalidation.10.3.4.nupkg.sha512",
     "C:\\Users\\Yusa\\.nuget\\packages\\fluentvalidation.aspnetcore\\10.3.4\\fluentvalidation.aspnetcore.10.3.4.nupkg.sha512",
