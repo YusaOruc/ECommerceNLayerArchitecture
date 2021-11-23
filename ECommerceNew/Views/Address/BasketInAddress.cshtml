@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewData["Title"] = "BasketInAddress";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+@model EntityLayer.Concreate.EntityFramework.Address
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
+    
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__text">
+                        <h4>Sepetim</h4>
+                        <div class="breadcrumb__links">
+                            <a href="/HomeProduct/Index/">Ana Sayfa</a>
+                            <a href="/ProductAddToBasket/ProductBasket/">Sepetim</a>
+                            <span>Adresim</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+    <section class="shopping-cart spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="cart__total">
+                        <img style="height: 210px; position: relative; " src="~/malefashion-master/img/shoping.jpg" />
+
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="cart__total">
+                        <div class="shopping__cart__table" style="height:180px;">
+
+
+
+                            <h4 style="font-weight:bold">Adres Seçimi</h4>
+                            <hr />
+
+                            @using (Html.BeginForm("AddOrder", "Order", FormMethod.Post))
+                            {
+
+                                @Html.DropDownListFor(x => x.AddressID, (List<SelectListItem>)ViewBag.ListAddress, new { @class = "form-control" })
+
+                                <br />
+
+                                <br />
+
+                                <hr />
+
+                                <div class="form-check">
+                                    <input id="check" class="form-check-input" type="checkbox" value="">
+                                    <label class="form-check-label" for="flexCheckIndeterminate">
+                                        Sözleşmeyi <a href="#">Link</a> okudum kabul ediyorum.
+                                    </label>
+                                </div>
+                                <br />
+                                <button disabled id="btn1" style="width: 55%;float:right" class="primary-btn">Siparişi Tamamla</button>
+
+                                <a style="height:47px;float:left" href="/Address/AddressAdd/" class="btn btn-secondary">Yeni Adres Ekle</a>
+
+                            }
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <script>
+        $('#btn1').click(function () {
+            document.getElementById("btn1").style.visibility = 'hidden';
+            swal("Teşekkür Ederiz!", "Siparişiniz Alınmıştır!", "success");
+        })
+
+    </script>
+    <script>
+        $('#check').click(function () {
+            /* document.getElementById("RegisterBtn").style.visibility = 'hidden';*/
+            if (document.getElementById("check").checked) {
+                document.getElementById("btn1").disabled = false;
+            } else {
+                document.getElementById("btn1").disabled = true;
+            }
+
+            /*swal("Teşekkür Ederiz!", "Siparişiniz Alınmıştır!", "success");*/
+        })
+
+    </script>

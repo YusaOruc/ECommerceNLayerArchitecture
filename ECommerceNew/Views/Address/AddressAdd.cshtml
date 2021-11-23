@@ -1,0 +1,46 @@
+﻿@model EntityLayer.Concreate.EntityFramework.Address
+@{
+    ViewData["Title"] = "AddressAdd";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+<section class="shopping-cart spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="cart__total">
+                    @using (Html.BeginForm("AddressAdd", "Address", FormMethod.Post))
+                    {
+                        @Html.Label("Adres İsmi")
+                        @Html.TextBoxFor(x => x.AddressHeader, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.AddressHeader, null, new { @class = "text-danger" })
+                        <br />
+                        @Html.Label("Şehir")
+                        @Html.TextBoxFor(x => x.City, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.City, null, new { @class = "text-danger" })
+                        <br />
+                        @Html.Label("Açık Adres")
+                        @Html.TextBoxFor(x => x.AddressUser, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.AddressUser, null, new { @class = "text-danger" })
+                        <br />
+                        @Html.Label("Posta Kodu")
+                        @Html.TextBoxFor(x => x.PostCode, new { @class = "form-control", @type = "number" })
+                        @Html.ValidationMessageFor(x => x.PostCode, null, new { @class = "text-danger" })
+                        <br />
+
+
+                        <button class="primary-btn">Ekle</button>
+
+
+                    }
+
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+

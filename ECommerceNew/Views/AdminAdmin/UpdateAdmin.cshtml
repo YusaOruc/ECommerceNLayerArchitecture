@@ -1,0 +1,32 @@
+﻿@model EntityLayer.Concreate.EntityFramework.Admin
+@{
+    ViewData["Title"] = "UpdateAdmin";
+    Layout = "~/Views/Shared/AdminPanelLayout.cshtml";
+}
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Admin Güncelleme Formu</h4>
+            @using (Html.BeginForm("UpdateAdmin", "AdminAdmin", FormMethod.Post))
+            {
+                <div class="form-group">
+                    @Html.HiddenFor(x => x.AdminID, new { @class = "form-control" })
+                    <label for="exampleInputName1">Admin Adı</label>
+                    @Html.TextBoxFor(x => x.AdminName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.AdminName, null, new { @class = "text-danger" })
+                    <br />
+                    <label for="exampleInputName1">Şifre</label>
+                    @Html.TextBoxFor(x => x.AdminPassword, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.AdminPassword, null, new { @class = "text-danger" })
+                </div>
+
+
+                <button class="btn btn-primary mr-2">Güncelle</button>
+               
+            }
+
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,45 @@
+﻿@model EntityLayer.Concreate.EntityFramework.User
+@{
+    ViewData["Title"] = "ProfileGetDetails";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+<section class="shopping-cart spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="cart__total">
+                    @using (Html.BeginForm("ProfileGetDetails", "Profile", FormMethod.Post))
+                    {
+                        @Html.Label("Kullanıcı Adı")
+                        @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.UserName, null, new { @class = "text-danger" })
+                        <br />
+                        @Html.Label("Mail Adresi")
+                        @Html.TextBoxFor(x => x.UserMail, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.UserMail, null, new { @class = "text-danger" })
+                        <br />
+                        @Html.Label("Telefon Numarası")
+                        @Html.TextBoxFor(x => x.UserNumber, new { @class = "form-control", @type = "number" })
+                        @Html.ValidationMessageFor(x => x.UserNumber, null, new { @class = "text-danger"})
+                        <br />
+                        @Html.Label("Şifre")
+                        @Html.TextBoxFor(x => x.UserPassword, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.UserPassword, null, new { @class = "text-danger" })
+                        <br />
+
+                        <button class="primary-btn">Güncelle</button>
+
+
+                    }
+
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+

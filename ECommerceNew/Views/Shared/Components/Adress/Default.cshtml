@@ -1,0 +1,21 @@
+﻿@using EntityLayer.Concreate.EntityFramework
+@model List<Address>
+<div class="cart__total">
+    <h6>Adreslerim</h6>
+    <hr />
+    <ul>
+        @foreach (var item in Model)
+        {
+            <a>@item.AddressHeader<a alt="Delete"  href="/Address/AddressRemove/@item.AddressID"><img style="height:20px;width:20px;float:right;" src="~/malefashion-master/img/icon/cross.png" /></a> </a>
+            <hr />
+        }
+
+
+
+    </ul>
+    <a href="/Address/AddressAdd/" class="primary-btn">Adres Ekle</a>
+</div>
+
+@*<div class="cart__total">
+    <a href="/Address/AddressAdd/" class="primary-btn">Adres Ekle</a>
+</div>*@

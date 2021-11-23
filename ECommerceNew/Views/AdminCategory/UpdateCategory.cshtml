@@ -1,0 +1,27 @@
+﻿@model EntityLayer.Concreate.EntityFramework.Category
+@{
+    ViewData["Title"] = "UpdateCategory";
+    Layout = "~/Views/Shared/AdminPanelLayout.cshtml";
+}
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Kategori Güncelleme Formu</h4>
+            @using (Html.BeginForm("UpdateCategory", "AdminCategory", FormMethod.Post))
+            {
+                <div class="form-group">
+                    @Html.HiddenFor(x => x.CategoryID,new { @class = "form-control" })
+                    <label for="exampleInputName1">Kategori</label>
+                    @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.CategoryName, null, new { @class = "text-danger" })
+                </div>
+
+
+                <button  class="btn btn-primary mr-2">Güncelle</button>
+               
+            }
+            
+        </div>
+    </div>
+</div>

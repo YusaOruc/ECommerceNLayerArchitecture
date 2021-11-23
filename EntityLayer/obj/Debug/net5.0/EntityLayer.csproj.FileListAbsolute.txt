@@ -1,0 +1,11 @@
+C:\Users\Yusa\source\repos\ECommerceNew\EntityLayer\bin\Debug\net5.0\EntityLayer.deps.json
+C:\Users\Yusa\source\repos\ECommerceNew\EntityLayer\bin\Debug\net5.0\EntityLayer.dll
+C:\Users\Yusa\source\repos\ECommerceNew\EntityLayer\bin\Debug\net5.0\ref\EntityLayer.dll
+C:\Users\Yusa\source\repos\ECommerceNew\EntityLayer\bin\Debug\net5.0\EntityLayer.pdb
+C:\Users\Yusa\source\repos\ECommerceNew\EntityLayer\obj\Debug\net5.0\EntityLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Yusa\source\repos\ECommerceNew\EntityLayer\obj\Debug\net5.0\EntityLayer.AssemblyInfoInputs.cache
+C:\Users\Yusa\source\repos\ECommerceNew\EntityLayer\obj\Debug\net5.0\EntityLayer.AssemblyInfo.cs
+C:\Users\Yusa\source\repos\ECommerceNew\EntityLayer\obj\Debug\net5.0\EntityLayer.csproj.CoreCompileInputs.cache
+C:\Users\Yusa\source\repos\ECommerceNew\EntityLayer\obj\Debug\net5.0\EntityLayer.dll
+C:\Users\Yusa\source\repos\ECommerceNew\EntityLayer\obj\Debug\net5.0\ref\EntityLayer.dll
+C:\Users\Yusa\source\repos\ECommerceNew\EntityLayer\obj\Debug\net5.0\EntityLayer.pdb

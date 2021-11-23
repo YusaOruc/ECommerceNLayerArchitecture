@@ -1,0 +1,55 @@
+﻿@using EntityLayer.Concreate.EntityFramework
+@model List<Slider>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminPanelLayout.cshtml";
+}
+
+
+<div class="col-md-12 grid-margin transparent">
+    <div class="row">
+
+        @await Component.InvokeAsync("HomeProductCounter")
+        @await Component.InvokeAsync("HomeCategoryCounter")
+        @await Component.InvokeAsync("HomeUserCounter")
+        @await Component.InvokeAsync("HomeOrderCounter")
+
+        @*<div class="col-md-3 mb-4 stretch-card transparent">
+                <div class="card card-inverse-success">
+                    <div class="card-body">
+                        <p class="mb-4">Toplam Sipariş Sayısı</p>
+                        <p class="fs-30 mb-2">350</p>
+
+                    </div>
+                </div>
+            </div>*@
+    </div>
+
+    <div class="card data-icon-card-primary">
+        <div class="card-body">
+            <p style="float:right" class="card-title text-white">Tüyolar </p>
+            <div class="row">
+                <div class="col-10 text-white">
+                    <h3 style="text-decoration: underline;">Fotoğraf Seçimi</h3>
+                    <br />
+                    <p class="text-white font-weight-500 mb-0">- Fotoğrafları lütfen yüksek çözünürlükte yükleyiniz. </p>
+                    <br />
+                    <p class="text-white font-weight-500 mb-0">- Ürün fotoğraflarını kare olarak yükleyiniz. </p>
+                    <br />
+                    <p class="text-white font-weight-500 mb-0">- Ana sayfada bulunan geçişli fotoğrafları sitenin temasına uygun olarak seçiniz.. </p>
+                    <br />
+                    <h3 style="text-decoration: underline;">Silme İşlemi</h3>
+                    <br />
+                    <p class="text-white font-weight-500 mb-0">- Emin olmadan silme işlemi yapmayınız </p>
+                    <br />
+                    <p class="text-white font-weight-500 mb-0">- Bir KATEGORİ ismini silmek isterseniz ona bağlı olan ürünleri silmeniz veya kategorisini güncellemeniz gerekmektedir. </p>
+                </div>
+                <div class="col-2 background-icon">
+                    <a href="#"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

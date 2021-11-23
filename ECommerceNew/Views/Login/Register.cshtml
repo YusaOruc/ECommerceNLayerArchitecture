@@ -1,0 +1,146 @@
+﻿
+@model EntityLayer.Concreate.EntityFramework.User
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login V15</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="~/WebLogin/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/WebLogin/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/WebLogin/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/WebLogin/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/WebLogin/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/WebLogin/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/WebLogin/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/WebLogin/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/WebLogin/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/WebLogin/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/WebLogin/css/main.css">
+    <!--===============================================================================================-->
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
+
+    <div style="margin-top:-50px;" class="limiter">
+        <div class="container-login100">
+            <div style="margin-top:-50px;" class="wrap-login100">
+                <br />
+                <h3 style="text-align:center">Üye Ol</h3>
+                <div style="padding:50px;">
+                    @using (Html.BeginForm("Register", "Login", FormMethod.Post))
+                    {
+                        <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+                            <label for="exampleInputName1">Kullanıcı Adı</label>
+                            @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.UserName, null, new { @class = "text-danger" })
+                            <span class="focus-input100"></span>
+                        </div>
+                        <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+                            <label for="exampleInputName1">Mail Adresi</label>
+                            @Html.TextBoxFor(x => x.UserMail, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.UserMail, null, new { @class = "text-danger" })
+                            <span class="focus-input100"></span>
+                        </div>
+
+                        <div class="wrap-input100 validate-input m-b-18" data-validate="Password is required">
+                            <label for="exampleInputName1">Şifre</label>
+                            @Html.TextBoxFor(x => x.UserPassword, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.UserPassword, null, new { @class = "text-danger" })
+                            <span class="focus-input100"></span>
+                        </div>
+                        <div class="wrap-input100 validate-input m-b-18" data-validate="Password is required">
+                            <label for="exampleInputName1">Telefon Numarası</label>
+                            @Html.TextBoxFor(x => x.UserNumber, new { @class = "form-control", @type = "number" })
+                            @Html.ValidationMessageFor(x => x.UserNumber, null, new { @class = "text-danger" })
+                            <span class="focus-input100"></span>
+                        </div>
+
+                        <br />
+                        <div class="form-check">
+                            <input id="check" class="form-check-input" type="checkbox" value="" >
+                            <label class="form-check-label" for="flexCheckIndeterminate">
+                                Sözleşmeyi <a href="#">Link</a> okudum kabul ediyorum.
+                            </label>
+                        </div>
+                        <br />
+
+                        <div class="container-login100-form-btn">
+                            <button  disabled  id="RegisterBtn" class="btn btn-success">
+                                Üye ol
+                            </button>
+                        </div>
+
+                    }
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!--===============================================================================================-->
+    <script src="~/WebLogin/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/WebLogin/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/WebLogin/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/WebLogin/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/WebLogin/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/WebLogin/vendor/daterangepicker/moment.min.js"></script>
+    <script src="~/WebLogin/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/WebLogin/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/WebLogin/js/main.js"></script>
+    <script type="text/javascript">
+        $('#RegisterBtn').click(function () {
+            var RegisterForm = document.getElementById('UserName').value;
+            if (RegisterForm == "") {
+                swal(RegisterForm, "Lütfen bütün alanları doldurunuz.", "info");
+            } else {
+                swal("Hoş Geldin " + RegisterForm, "Kaydınız başarı ile yapılmıştır.", "success");
+            }
+
+
+
+        })
+
+    </script>
+
+</body>
+</html>
+<script>
+    $('#check').click(function () {
+        /* document.getElementById("RegisterBtn").style.visibility = 'hidden';*/
+        if (document.getElementById("check").checked) {
+            document.getElementById("RegisterBtn").disabled = false;
+        } else {
+            document.getElementById("RegisterBtn").disabled = true;
+        }
+        
+        /*swal("Teşekkür Ederiz!", "Siparişiniz Alınmıştır!", "success");*/
+    })
+
+</script>

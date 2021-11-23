@@ -1,0 +1,38 @@
+﻿@using EntityLayer.Concreate.EntityFramework
+@model List<Address>
+
+
+
+<form method="post" action="/Order/AddOrder/">
+
+
+    <div class="row">
+        <div class="col-md-8">
+            <select name="AddressID" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                <option  disabled>Lütfen adresinizi seçiniz.</option>
+                @foreach (var item in Model)
+                {
+                    <option value="@item.AddressID">@item.AddressHeader</option>
+                }
+
+
+            </select>
+        </div>
+        <div class="col-4">
+            <a style="float:right" href="/Address/AddressAdd/" class="btn btn-secondary"> Ekle</a>
+        </div>
+    </div>
+
+    <h6>Sepet Toplamı</h6>
+    <ul>
+
+        <li>Toplam <span> @ViewBag.BasketPrice</span></li>
+    </ul>
+    <input style="width:100%" class="primary-btn" type="submit" value="Satın Al">
+    
+
+</form>
+
+
+
+

@@ -1,0 +1,102 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminPanelLayout.cshtml";
+}
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+
+@using EntityLayer.Concreate.EntityFramework
+@model IPagedList<User>
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Kullanıcı Tablosu</h4>
+            <form method="get" action="/AdminUser/Index/">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <input name="p"id="p" class="form-control form-control-sm" type="text" placeholder="Aramak istediğiniz kullanıcının adı">
+                    </div>
+                    <div class="col-lg-4">
+                        <button class="btn btn-inverse-info">Ara</button>
+                    </div>
+                </div>
+                
+                
+            </form>
+
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                Kullanıcı ID
+                            </th>
+                            <th>
+                                Kullanıcı Adı
+                            </th>
+                            <th>
+                                Kullanıcı Şifresi
+                            </th>
+                            <th>
+                                Telefon numarası
+                            </th>
+                            <th>
+                                Sil
+                            </th>
+                            <th>
+                                Güncelle
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @item.UserID
+                                </td>
+                                <td>
+                                    @item.UserName
+                                </td>
+                                <td>
+                                    ************
+                                </td>
+                                <td>
+                                    @item.UserNumber
+                                </td>
+                                <td>
+                                    <a href="/AdminUser/DeleteUser/@item.UserID" class="btn btn-danger">Sil</a>
+                                </td>
+                                <td>
+                                    <a href="/AdminUser/UpdateUsers/@item.UserID" class="btn btn-success">Güncelle</a>
+                                </td>
+
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+            <br />
+
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new X.PagedList.Web.Common.PagedListRenderOptions
+                         {
+                                  DisplayLinkToIndividualPages = true,
+                                  DisplayPageCountAndCurrentLocation = false,
+                                  MaximumPageNumbersToDisplay = 10,
+                                  LiElementClasses = new string[] { "page-item" },
+                             PageClasses = new string[] { "page-link" },
+
+                              })
+        </div>
+    </div>
+</div>
+
+
+
+
+

@@ -1,0 +1,69 @@
+﻿@using EntityLayer.Concreate.EntityFramework
+@model List<User>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__text">
+                    <h4>Profilim</h4>
+                    <div class="breadcrumb__links">
+                        <a href="/HomeProduct/Index/">Ana Sayfa</a>
+                        <span>Profilim</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+<section class="shopping-cart spad">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-8">
+                @foreach (var item in Model)
+                {
+                    <div class="cart__total">
+                        <h6 style="text-align:center;">Profil Bilgilerim</h6>
+                        <hr />
+                        <a>Kullanıcı Adım: @item.UserName</a>
+                        <hr />
+                        <a>Mail Adresim : @item.UserMail</a>
+                        <hr />
+                        <a>Telefon Numaram : @item.UserNumber</a>
+                        <hr />
+                        <a>Şifrem : ********** </a>
+
+
+                    </div>
+
+
+                    <div class="cart__total">
+                        <a href="/Profile/ProfileGetDetails/@item.UserID" class="primary-btn">Profil Bilgilerimi Güncelle</a>
+
+                    </div>
+                }
+
+
+
+            </div>
+            <div class="col-lg-4">
+                <a style="float:right;margin-right:10px;margin-top:10px;" href="/MyOrders/Index/" class="btn btn-info">Siparişlerim</a>
+                <br />
+                @await Component.InvokeAsync("Adress")
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+

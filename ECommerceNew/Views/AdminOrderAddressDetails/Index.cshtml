@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminPanelLayout.cshtml";
+}
+
+@model EntityLayer.Concreate.EntityFramework.Address
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Adres Detay</h4>
+            <div class="form-group">
+                <label for="exampleInputName1">Adres ID</label>
+                @Html.TextBoxFor(x => x.AddressID, new { @class = "form-control", @readonly = "readonly" })
+                <br />
+                <label for="exampleInputName1">Adres Başlığı</label>
+                @Html.TextBoxFor(x => x.AddressHeader, new { @class = "form-control", @readonly = "readonly" })
+                <br />
+                <label for="exampleInputName1">Açık adres</label>
+                @Html.TextBoxFor(x => x.AddressUser, new { @class = "form-control", @readonly = "readonly" })
+                <br />
+                <label for="exampleInputName1">Şehir</label>
+                @Html.TextBoxFor(x => x.City, new { @class = "form-control", @readonly = "readonly" })
+                <br />
+                <label for="exampleInputName1">Posta kodu</label>
+                @Html.TextBoxFor(x => x.PostCode, new { @class = "form-control", @readonly = "readonly" })
+                <br />
+
+            </div>
+        </div>
+    </div>
+</div>
+

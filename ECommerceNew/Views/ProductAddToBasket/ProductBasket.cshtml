@@ -1,0 +1,109 @@
+﻿@using EntityLayer.Concreate.EntityFramework
+@model List<BasketProduct>
+@{
+    ViewData["Title"] = "ProductBasket";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__text">
+                    <h4>Sepetim</h4>
+                    <div class="breadcrumb__links">
+                        <a href="/HomeProduct/Index/">Ana Sayfa</a>
+                        <a href="/ShoppingProduct/Index/">Mağaza</a>
+                        <span>Sepetim</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+<!-- Shopping Cart Section Begin -->
+<section class="shopping-cart spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="shopping__cart__table">
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Ürün</th>
+
+                                <th>Adet</th>
+                                <th>Fiyat</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{ float toplam = 0; float price = 0;}
+                            @foreach (var item in Model)
+                            {
+                                toplam = toplam + (float)item.BasketProductPrice * item.BasketProductNumber;
+
+                                <tr>
+                                    <td class="product__cart__item">
+                                        <div class="product__cart__item__pic">
+                                            <a href="/ShoppingProduct/ProductDetails/@item.SelectedBasketProductID"><img style="width:100px;height:100px;" src="@item.BasketProductImg" alt=""></a>
+                                        </div>
+                                        <div class="product__cart__item__text">
+                                            <a href="/ShoppingProduct/ProductDetails/@item.SelectedBasketProductID"><h5>@item.BasketProductTitle - @ViewBag.product</h5></a>
+                                            @*<p>@item.ProductDescription.Substring(0, 35) ...</p>*@
+                                        </div>
+                                    </td>
+                                   
+
+                                    <td>
+                                        <div class="row">
+                                            <div>
+                                                <button style="border-radius: 30px; height: 30px; width: 30px; background-color:aliceblue; color: brown; "><a href="/ProductAddToBasket/BasketProductNumberDelete/@item.BasketProductID">-</a></button>
+                                            </div>
+                                            <div class="col-2">
+                                                <p style="text-align:center;margin-right:5px;">@item.BasketProductNumber</p>
+                                            </div>
+                                            <br />
+                                            <div>
+                                                <button style="border-radius: 30px; height: 30px; width: 30px; background-color:aliceblue; color: brown; "><a href="/ProductAddToBasket/BasketProductNumberAdd/@item.BasketProductID">+</a></button>
+                                            </div>
+                                        </div>
+
+                                    </td>
+
+                                    <td class="cart__price">@(price= (float)item.BasketProductPrice*item.BasketProductNumber)</td>
+
+                                    <td class="cart__close"><a href="/ProductAddToBasket/ProductDelete/@item.SelectedBasketProductID"><i class="fa fa-close"></i></a></td>
+                                </tr>
+
+                            }
+
+                        </tbody>
+                    </table>
+                    
+
+                </div>
+                
+
+            </div>
+            @{ViewBag.BasketPrice = toplam;}
+            <div class="col-lg-4">
+                
+                <div class="cart__total">
+                    <h6>Sepetim</h6>
+                    <ul>
+                        
+                        <li>Toplam <span>@toplam TL</span></li>
+                    </ul>
+                    <a href="/Address/BasketInAddress/" class="primary-btn">Sepeti Onayla</a>
+                </div>
+            </div>
+            
+
+        </div>
+    </div>
+</section>
+<!-- Shopping Cart Section End -->

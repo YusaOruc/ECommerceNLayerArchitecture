@@ -1,0 +1,34 @@
+﻿@model EntityLayer.Concreate.EntityFramework.Slider
+@{
+    ViewData["Title"] = "UpdateSlider";
+    Layout = "~/Views/Shared/AdminPanelLayout.cshtml";
+}
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Slider Güncelleme Formu</h4>
+            @using (Html.BeginForm("UpdateSlider", "AdminSlider", FormMethod.Post))
+            {
+                
+                <div class="form-group">
+                    @Html.HiddenFor(x => x.SliderID, new { @class = "form-control" })
+                    @Html.HiddenFor(x => x.SliderImg, new { @class = "form-control" })
+                    <img style="width:100%;height:500px;" src="@Model.SliderImg" alt="image" />
+                    <br />
+                    <label for="exampleInputName1">Başlık</label>
+                    @Html.TextBoxFor(x => x.SliderHeader, new { @class = "form-control" })
+                    <br />
+                    <label for="exampleInputName1">Açıklama</label>
+                    @Html.TextAreaFor(x => x.SliderDescription,10,30, new { @class = "form-control" })
+                    
+                </div>
+
+
+                <button class="btn btn-primary mr-2">Güncelle</button>
+
+            }
+           
+        </div>
+    </div>
+</div>
+

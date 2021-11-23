@@ -1,0 +1,32 @@
+﻿@model EntityLayer.Concreate.EntityFramework.Contact
+
+@{
+    ViewData["Title"] = "DetailsMessage";
+    Layout = "~/Views/Shared/AdminPanelLayout.cshtml";
+}
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Yorum Detay </h4>
+            @using (Html.BeginForm())
+            {
+                <div class="form-group">
+                    @Html.HiddenFor(x => x.ContactID, new { @class = "form-control" })
+                    <label for="exampleInputName1">Kullanıcı</label>
+                    @Html.TextBoxFor(x => x.ContactName, new { @class = "form-control" })
+                    <br />
+                    <label for="exampleInputName1">Mail Adresi</label>
+                    @Html.TextBoxFor(x => x.ContactMail, new { @class = "form-control" })
+                    <br />
+                    <label for="exampleInputName1">Mesaj</label>
+                    @Html.TextAreaFor(x => x.ContactComment,10,30, new { @class = "form-control" })
+                    
+                </div>
+
+
+            }
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+﻿
+@using EntityLayer.Concreate.EntityFramework
+@model List<Slider>
+
+<section  class="hero">
+    <div  class="hero__slider owl-carousel">
+        @foreach (var item in Model)
+        {
+            <div  class="hero__items set-bg" data-setbg="@item.SliderImg">
+                @*<img src="@item.SliderImg" />*@
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-5 col-lg-7 col-md-8">
+                            <div class="hero__text" >
+
+                                <h2>@item.SliderHeader </h2>
+                                <p>
+                                    
+                                    @item.SliderDescription
+                                </p>
+                                <a href="/ShoppingProduct/Index/" class="primary-btn">İncele <span class="arrow_right"></span></a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+    </div>
+    </section>

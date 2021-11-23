@@ -1,0 +1,60 @@
+﻿@model EntityLayer.Concreate.EntityFramework.Contact
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+<!-- Contact Section Begin -->
+<section class="contact spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="contact__text">
+                    <div class="section-title">
+                        <span>Bilgilendirme</span>
+                        <h2>Bize Yazın</h2>
+                        <p>
+                            Fikirleriniz bizim için önemlidir lütfen herhangi bir tavsiye veya eleştiriniz varsa bize bildiriniz.
+                        </p>
+                    </div>
+                    <ul>
+                        <li>
+                            <h4>Ürün ve Sipariş</h4>
+                            <p>Ürünler ve siparişler ile ilgili soru ve görüşlerinizi bize bildirebilirsiniz.<br />3 iş günü içinde geri dönüş yapılacaktır.</p>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="contact__form">
+                    @using (Html.BeginForm("Index", "Contact", FormMethod.Post))
+                    {
+                        <div class="row">
+                            <div class="col-lg-6">
+                                @Html.ValidationMessageFor(x => x.ContactName, null, new { @class = "text-danger" })
+                                @Html.TextBoxFor(x => x.ContactName, new { @class = "form-control", @placeholder = "Lütfen adınızı giriniz" })
+
+                            </div>
+                            <div class="col-lg-6">
+                                @Html.ValidationMessageFor(x => x.ContactMail, null, new { @class = "text-danger" })
+                                @Html.TextBoxFor(x => x.ContactMail, new { @class = "form-control", @placeholder = "Lütfen mail adresinizi giriniz" })
+
+                            </div>
+                            <div class="col-lg-12">
+                                @Html.ValidationMessageFor(x => x.ContactComment, null, new { @class = "text-danger" })
+                                @Html.TextAreaFor(x => x.ContactComment, 0, 15, new { @class = "form-control", @placeholder = "Lütfen mesajınızı giriniz" })
+
+                                <br />
+                                <button type="submit" class="site-btn">Gönder</button>
+                            </div>
+                        </div>
+                    }
+                    @*<form action="/Contact/Index/" method="post">
+                    </form>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Contact Section End -->

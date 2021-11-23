@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminPanelLayout.cshtml";
+}
+
+@using EntityLayer.Concreate.EntityFramework
+@model List<Slider>
+
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Slider Tablosu</h4>
+            
+
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                Slider Img
+                            </th>
+                            <th>
+                                Başlık
+                            </th>
+                            
+                            <th>
+                                Sil
+                            </th>
+                            <th>
+                                Güncelle
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="py-1">
+                                    <img style="width:300px;height:200px;" src="@item.SliderImg" alt="image" />
+                                </td>
+                                <td>
+                                    @item.SliderHeader
+                                </td>
+                                
+                                
+                                <td>
+                                    <a href="/AdminSlider/DeleteSlider/@item.SliderID" class="btn btn-danger">Sil</a>
+                                </td>
+                                <td>
+                                    <a href="/AdminSlider/UpdateSlider/@item.SliderID" class="btn btn-inverse-info">Güncelle</a>
+                                </td>
+
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+            <br />
+          
+        </div>
+    </div>
+</div>
