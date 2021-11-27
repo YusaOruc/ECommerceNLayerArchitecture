@@ -27,14 +27,14 @@
     <link rel="shortcut icon" href="~/skydash/images/favicon.png" />
 </head>
 <body>
-    <div class="container-scroller">
+    <div  class="container-scroller">
         <!-- partial:partials/_navbar.html -->
-        <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <nav  class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+            <div  class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
                 <a class="navbar-brand brand-logo mr-5" href="index.html"><img style="width:200px;height:55px;margin-left:20px;" src="~/malefashion-master/img/NewLogo.png" class="mr-2" alt="logo" /></a>
                 <a class="navbar-brand brand-logo-mini" href="index.html"><img src="~/skydash/images/logo-mini.svg" alt="logo" /></a>
             </div>
-            <div style="background-color:#3e5261;" class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+            <div style="background-color:#3e5261;"  class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
                 <button style="color:aliceblue;" class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                     <span class="icon-menu"></span>
                 </button>
@@ -142,7 +142,7 @@
                     <li class="nav-item">
                         <a class="nav-link active" id="todo-tab" data-toggle="tab" href="#todo-section" role="tab" aria-controls="todo-section" aria-expanded="true">TO DO LIST</a>
                     </li>
-
+                    
                 </ul>
                 <div class="tab-content" id="setting-content">
                     <div class="tab-pane fade show active scroll-wrapper" id="todo-section" role="tabpanel" aria-labelledby="todo-section">
@@ -203,15 +203,16 @@
                                 </li>
                             </ul>
                         </div>
-
+                        
                     </div>
                     <!-- To do section tab ends -->
+                    
                     <!-- chat tab ends -->
                 </div>
             </div>
             <!-- partial -->
             <!-- partial:partials/_sidebar.html -->
-            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <nav  class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
                         <a class="nav-link" href="/AdminHome/Index/">
@@ -316,9 +317,9 @@
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="row">
-
-                        @RenderBody()
-
+                        
+                            @RenderBody()
+                        
                     </div>
                 </div>
             </div>
@@ -327,6 +328,7 @@
         <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
+    
     <!-- plugins:js -->
     <script src="~/skydash/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
@@ -347,7 +349,6 @@
     <!-- Custom js for this page-->
     <script src="~/skydash/js/dashboard.js"></script>
     <script src="~/skydash/js/Chart.roundedBarCharts.js"></script>
-    <!-- End custom js for this page-->
     <!-- End custom js for this page-->
 </body>
 

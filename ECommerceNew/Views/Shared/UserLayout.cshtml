@@ -71,9 +71,9 @@
                     <div class="col-lg-6 col-md-5">
                         <div class="header__top__right">
                             <div class="header__top__links">
-
-                                <a href="/Login/Index/">Giriş Yap</a>
-                                <a href="/Login/LogOut/">Çıkış Yap</a>
+                                
+                                <a href="@(User.Identity.Name==null?"/Login/Index/":"/Login/LogOut/") ">@(User.Identity.Name==null?"Giriş Yap":"Çıkış yap")</a>
+                                
                                 
 
 

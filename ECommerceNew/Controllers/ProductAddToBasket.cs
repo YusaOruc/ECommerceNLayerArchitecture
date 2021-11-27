@@ -19,11 +19,13 @@ namespace ECommerce.Controllers
 
         public IActionResult Index(int id)
         {
-             
+            
             var product = productManager.GetByIDService(id);
             var usermail = User.Identity.Name;
+            
             var userID = userManager.GetListAllService(x => x.UserMail == usermail).Select(y => y.UserID).FirstOrDefault();
-            //SetCookie("product",product.ProductID.ToString());
+
+            SetCookie("product", product.ProductID.ToString());
 
             basketProductManager.BasketProductInsertService(product,userID);
             return RedirectToAction("Index", "ShoppingProduct");
@@ -34,6 +36,7 @@ namespace ECommerce.Controllers
             var usermail = User.Identity.Name;
             var userID = userManager.GetListAllService(x => x.UserMail == usermail).Select(y => y.UserID).FirstOrDefault();
             var values = basketProductManager.GetListAllService(x=>x.UserID==userID);
+            ViewBag.cookie=GetCookie("product");
            
             return View(values);
             
@@ -75,10 +78,14 @@ namespace ECommerce.Controllers
         public void SetCookie(string key, string value)
         {
             HttpContext.Response.Cookies.Append(key, value);
+           
         }
         public string GetCookie(string key)
         {
+           
             HttpContext.Request.Cookies.TryGetValue(key, out string value);
+             
+            
             return value;
         }
     }

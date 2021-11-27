@@ -4,9 +4,9 @@
 *@
 <div class="header__nav__option">
 
-    <a href="/ProductAddTofavorite/Index/"><img src="~/malefashion-master/img/icon/heart2.png" alt=""></a>
-    <a style="margin-right:25px;color:crimson;font-weight:bold;" href="/ProductAddToBasket/ProductBasket/"><img src="~/malefashion-master/img/icon/cart.png" alt="">@ViewBag.basketNumber </a>
-    <a style="margin-right:40px" href="/Profile/Index/"><img src="~/malefashion-master/img/icon/user.png" alt=""></a>
+    <a style="margin-right:25px;color:crimson;font-weight:bold;"href="@(User.Identity.Name==null?"/Login/Index/":"/ProductAddTofavorite/Index/")"><img src="~/malefashion-master/img/icon/heart2.png" alt="">@(ViewBag.favNumber==0 ?"": ViewBag.favNumber)</a>
+    <a style="margin-right:25px;color:crimson;font-weight:bold;" href="@(User.Identity.Name==null?"/Login/Index/":"/ProductAddToBasket/ProductBasket/")"><img src="~/malefashion-master/img/icon/cart.png" alt="">@(ViewBag.basketNumber == 0 ?"": ViewBag.basketNumber) </a>
+    <a style="margin-right:40px" href="@(User.Identity.Name==null?"/Login/Index/":"/Profile/Index/")"><img src="~/malefashion-master/img/icon/user.png" alt=""></a>
 
 
 </div>

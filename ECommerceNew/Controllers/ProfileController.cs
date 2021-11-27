@@ -20,6 +20,10 @@ namespace ECommerce.Controllers
         {
             var usermail = User.Identity.Name;
             var userID = userManager.GetListAllService(x => x.UserMail == usermail).Select(y => y.UserID).FirstOrDefault();
+            if (usermail == null)
+            {
+                return RedirectToAction("Index","Login");
+            }
             var values = userManager.GetListAllService(x=>x.UserID==userID);
             return View(values);
         }

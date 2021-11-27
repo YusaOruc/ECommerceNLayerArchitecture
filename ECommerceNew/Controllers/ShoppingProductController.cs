@@ -15,7 +15,7 @@ namespace ECommerce.Controllers
         
         public IActionResult Index(string p)
         {
-
+            
             if (string.IsNullOrEmpty(p))
             {
                 var values = productManager.GetListAllService();
