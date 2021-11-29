@@ -12,7 +12,7 @@ namespace DataAccessLayer.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=DESKTOP-PLG92B8;database=ECommerceDb;integrated security=true;");
+            optionsBuilder.UseSqlServer("server=DESKTOP-PLG92B8;database=ECommerceDb2;integrated security=true;");
         }
         public DbSet<Admin> Admins { get; set; }
         public DbSet<BasketProduct> BasketProducts { get; set; }

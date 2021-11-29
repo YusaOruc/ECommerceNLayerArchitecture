@@ -10,3 +10,15 @@ C:\Users\Yusa\source\repos\ECommerceNew\EntityLayer\obj\Debug\net5.0\EntityLayer
 C:\Users\Yusa\source\repos\ECommerceNew\EntityLayer\obj\Debug\net5.0\ref\EntityLayer.dll
 C:\Users\Yusa\source\repos\ECommerceNew\EntityLayer\obj\Debug\net5.0\EntityLayer.pdb
 C:\Users\Yusa\source\repos\ECommerceNew\EntityLayer\obj\Debug\net5.0\EntityLayer.csproj.AssemblyReference.cache
+C:\Users\Yusa\Desktop\ECommerceNLayerArchitecture\EntityLayer\bin\Debug\net5.0\EntityLayer.deps.json
+C:\Users\Yusa\Desktop\ECommerceNLayerArchitecture\EntityLayer\bin\Debug\net5.0\EntityLayer.dll
+C:\Users\Yusa\Desktop\ECommerceNLayerArchitecture\EntityLayer\bin\Debug\net5.0\ref\EntityLayer.dll
+C:\Users\Yusa\Desktop\ECommerceNLayerArchitecture\EntityLayer\bin\Debug\net5.0\EntityLayer.pdb
+C:\Users\Yusa\Desktop\ECommerceNLayerArchitecture\EntityLayer\obj\Debug\net5.0\EntityLayer.csproj.AssemblyReference.cache
+C:\Users\Yusa\Desktop\ECommerceNLayerArchitecture\EntityLayer\obj\Debug\net5.0\EntityLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Yusa\Desktop\ECommerceNLayerArchitecture\EntityLayer\obj\Debug\net5.0\EntityLayer.AssemblyInfoInputs.cache
+C:\Users\Yusa\Desktop\ECommerceNLayerArchitecture\EntityLayer\obj\Debug\net5.0\EntityLayer.AssemblyInfo.cs
+C:\Users\Yusa\Desktop\ECommerceNLayerArchitecture\EntityLayer\obj\Debug\net5.0\EntityLayer.csproj.CoreCompileInputs.cache
+C:\Users\Yusa\Desktop\ECommerceNLayerArchitecture\EntityLayer\obj\Debug\net5.0\EntityLayer.dll
+C:\Users\Yusa\Desktop\ECommerceNLayerArchitecture\EntityLayer\obj\Debug\net5.0\ref\EntityLayer.dll
+C:\Users\Yusa\Desktop\ECommerceNLayerArchitecture\EntityLayer\obj\Debug\net5.0\EntityLayer.pdb
