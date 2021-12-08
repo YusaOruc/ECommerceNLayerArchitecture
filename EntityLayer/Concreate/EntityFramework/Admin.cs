@@ -13,5 +13,6 @@ namespace EntityLayer.Concreate.EntityFramework
         public int AdminID { get; set; }
         public string AdminName { get; set; }
         public string AdminPassword { get; set; }
+        public string Roles { get; set; }
     }
 }

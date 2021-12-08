@@ -19,18 +19,39 @@ namespace ECommerce.Controllers.AdminPanel
         AdminManager adminManager = new AdminManager(new AdminDal());
         public IActionResult Index(int page=1)
         {
-            var values = adminManager.GetListAllService().ToPagedList(page, 5);
-            return View(values);
+            var usermail = User.Identity.Name;
+            var validation = adminManager.GetListAllService(x => x.AdminName == usermail).Select(x => x.Roles).FirstOrDefault(); ;
+            if (validation == "Admin")
+            {
+                var values = adminManager.GetListAllService().ToPagedList(page, 5);
+                return View(values);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
+           
         }
         [HttpGet]
         public IActionResult AddAdmin()
         {
-            return View();
+            var usermail = User.Identity.Name;
+            var validation = adminManager.GetListAllService(x => x.AdminName == usermail).Select(x => x.Roles).FirstOrDefault();
+            if (validation == "Admin")
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "AdminLogin");
+            }
+            
         }
         [HttpPost]
         public IActionResult AddAdmin(Admin admin)
         {
             AdminValidator validationRules = new AdminValidator();
+            admin.Roles = "Admin";
             ValidationResult result = validationRules.Validate(admin);
             if (result.IsValid)
             {
@@ -56,8 +77,18 @@ namespace ECommerce.Controllers.AdminPanel
         [HttpGet]
         public IActionResult UpdateAdmin(int id)
         {
-            var values = adminManager.GetByIDService(id);
-            return View(values);
+            var usermail = User.Identity.Name;
+            var validation = adminManager.GetListAllService(x => x.AdminName == usermail).Select(x => x.Roles).FirstOrDefault(); ;
+            if (validation == "Admin")
+            {
+                var values = adminManager.GetByIDService(id);
+                return View(values);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
+           
         }
         [HttpPost]
         public IActionResult UpdateAdmin(Admin admin)
@@ -76,7 +107,9 @@ namespace ECommerce.Controllers.AdminPanel
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
             }
+            
             return View();
         }
+       
     }
 }

@@ -14,15 +14,36 @@ namespace ECommerce.Controllers.AdminPanel
     public class AdminSliderController : Controller
     {
         SliderManager sliderManager = new SliderManager(new SliderDal());
+        AdminManager adminManager = new AdminManager(new AdminDal());
         public IActionResult Index()
         {
-            var values = sliderManager.GetListAllService();
-            return View(values);
+            var usermail = User.Identity.Name;
+            var validation = adminManager.GetListAllService(x => x.AdminName == usermail).Select(x => x.Roles).FirstOrDefault();
+            if (validation == "Admin")
+            {
+                var values = sliderManager.GetListAllService();
+                return View(values);
+            }
+            else
+            {
+                return RedirectToAction("Index", "AdminLogin");
+            }
+            
         }
         [HttpGet]
         public IActionResult AddSlider()
         {
-            return View();
+            var usermail = User.Identity.Name;
+            var validation = adminManager.GetListAllService(x => x.AdminName == usermail).Select(x => x.Roles).FirstOrDefault();
+            if (validation == "Admin")
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "AdminLogin");
+            }
+            
         }
         [HttpPost]
         public IActionResult AddSlider(Slider slider)
@@ -39,8 +60,18 @@ namespace ECommerce.Controllers.AdminPanel
         [HttpGet]
         public IActionResult UpdateSlider(int id)
         {
-            var value = sliderManager.GetByIDService(id);
-            return View(value);
+            var usermail = User.Identity.Name;
+            var validation = adminManager.GetListAllService(x => x.AdminName == usermail).Select(x => x.Roles).FirstOrDefault();
+            if (validation == "Admin")
+            {
+                var value = sliderManager.GetByIDService(id);
+                return View(value);
+            }
+            else
+            {
+                return RedirectToAction("Index", "AdminLogin");
+            }
+            
         }
         [HttpPost]
         public IActionResult UpdateSlider(Slider slider)

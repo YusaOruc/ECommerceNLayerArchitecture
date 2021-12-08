@@ -14,18 +14,29 @@ namespace ECommerce.Controllers.AdminPanel
     public class AdminProductController : Controller
     {
         ProductManager productManager = new ProductManager(new ProductDal());
+        AdminManager adminManager = new AdminManager(new AdminDal());
         public IActionResult Index(string p,int page=1)
         {
-            if (string.IsNullOrEmpty(p))
+            var usermail = User.Identity.Name;
+            var validation = adminManager.GetListAllService(x => x.AdminName == usermail).Select(x => x.Roles).FirstOrDefault();
+            if (validation == "Admin")
             {
-                var values = productManager.GetListAllWithCategory().ToPagedList(page, 5);
-                return View(values);
+                if (string.IsNullOrEmpty(p))
+                {
+                    var values = productManager.GetListAllWithCategory().ToPagedList(page, 5);
+                    return View(values);
+                }
+                else
+                {
+                    var values = productManager.GetListAllWithCategory(x => x.ProductName.Contains(p)).ToPagedList(page, 5);
+                    return View(values);
+                }
             }
             else
             {
-                var values = productManager.GetListAllWithCategory(x => x.ProductName.Contains(p)).ToPagedList(page, 5);
-                return View(values);
+                return RedirectToAction("Index", "AdminLogin");
             }
+            
             
         }
         public IActionResult DeleteProduct(int id)

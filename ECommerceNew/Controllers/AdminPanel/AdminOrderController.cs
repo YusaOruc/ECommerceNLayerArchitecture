@@ -18,34 +18,46 @@ namespace ECommerce.Controllers.AdminPanel
     {
         OrderManager orderManager = new OrderManager(new OrderDal());
         UserManager userManager = new UserManager(new UserDal());
+        AdminManager adminManager = new AdminManager(new AdminDal());
         public IActionResult Index(string p,int page=1)
         {
             List<int> userList = new List<int>();
             List<User> users = new List<User>();
-
-            //var values2 = orderManager.GetListAllWithProductService(x=>x.OrderStatus==true).Distinct();
-            //return View(values2);
+            //********************
+            var usermail = User.Identity.Name;
+            var validation = adminManager.GetListAllService(x => x.AdminName == usermail).Select(x => x.Roles).FirstOrDefault();
             var values = orderManager.GetListAllService().Where(x => x.OrderStatus == true).Select(x => x.UserID).Distinct();
-            foreach (var item in values)
+            if (validation == "Admin")
             {
-                userList.Add(Convert.ToInt32(item));
-            }
-            foreach (var item in userList)
-            {
-                var user = userManager.GetByIDService(item);
-                users.Add(user);
-            }
+                foreach (var item in values)
+                {
+                    userList.Add(Convert.ToInt32(item));
+                }
+                foreach (var item in userList)
+                {
+                    var user = userManager.GetByIDService(item);
+                    users.Add(user);
+                }
 
-            if (string.IsNullOrEmpty(p))
-            {
-                var userListpost = users.ToPagedList(page, 5);
-                return View(userListpost);
+                if (string.IsNullOrEmpty(p))
+                {
+                    var userListpost = users.ToPagedList(page, 5);
+                    return View(userListpost);
+                }
+                else
+                {
+                    var userListpost = users.Where(x => x.UserName.Contains(p)).ToPagedList(page, 5);
+                    return View(userListpost);
+                }
             }
             else
             {
-                var userListpost = users.Where(x => x.UserName.Contains(p)).ToPagedList(page, 5);
-                return View(userListpost);
+                return RedirectToAction("Index", "AdminLogin");
             }
+            //var values2 = orderManager.GetListAllWithProductService(x=>x.OrderStatus==true).Distinct();
+            //return View(values2);
+            
+            
         }
         public IActionResult StatusFalse(string p, int page = 1)
         {
@@ -54,55 +66,85 @@ namespace ECommerce.Controllers.AdminPanel
 
 
             var values = orderManager.GetListAllService().Where(x => x.OrderStatus == false).Select(x => x.UserID).Distinct();
-            foreach (var item in values)
+            var usermail = User.Identity.Name;
+            var validation = adminManager.GetListAllService(x => x.AdminName == usermail).Select(x => x.Roles).FirstOrDefault();
+            if (validation == "Admin")
             {
-                userList.Add(Convert.ToInt32(item));
-            }
-            foreach (var item in userList)
-            {
-                var user = userManager.GetByIDService(item);
-                users.Add(user);
-            }
+                foreach (var item in values)
+                {
+                    userList.Add(Convert.ToInt32(item));
+                }
+                foreach (var item in userList)
+                {
+                    var user = userManager.GetByIDService(item);
+                    users.Add(user);
+                }
 
-            if (string.IsNullOrEmpty(p))
-            {
-                var userListpost = users.ToPagedList(page, 5);
-                return View(userListpost);
+                if (string.IsNullOrEmpty(p))
+                {
+                    var userListpost = users.ToPagedList(page, 5);
+                    return View(userListpost);
+                }
+                else
+                {
+                    var userListpost = users.Where(x => x.UserName.Contains(p)).ToPagedList(page, 5);
+                    return View(userListpost);
+                }
             }
             else
             {
-                var userListpost = users.Where(x => x.UserName.Contains(p)).ToPagedList(page, 5);
-                return View(userListpost);
+                return RedirectToAction("Index", "AdminLogin");
             }
+            
         }
         public IActionResult Details(string p,int id,int page=1)
         {
-            if (string.IsNullOrEmpty(p))
+            var usermail = User.Identity.Name;
+            var validation = adminManager.GetListAllService(x => x.AdminName == usermail).Select(x => x.Roles).FirstOrDefault();
+            if (validation == "Admin")
             {
-                var values = orderManager.GetListAllWithProductService(x => x.UserID == id).Where(x=>x.OrderStatus==true).ToPagedList(page, 5);
-                return View(values);
+                if (string.IsNullOrEmpty(p))
+                {
+                    var values = orderManager.GetListAllWithProductService(x => x.UserID == id).Where(x => x.OrderStatus == true).ToPagedList(page, 5);
+                    return View(values);
+                }
+                else
+                {
+                    var values = orderManager.GetListAllWithProductService(x => x.UserID == id).Where(x => x.Products.ProductName.Contains(p) && x.OrderStatus == true).ToPagedList(page, 5);
+                    return View(values);
+                }
             }
             else
             {
-                var values = orderManager.GetListAllWithProductService(x => x.UserID == id).Where(x=>x.Products.ProductName.Contains(p)&&x.OrderStatus==true).ToPagedList(page, 5);
-                return View(values);
+                return RedirectToAction("Index", "AdminLogin");
             }
+            
             
              
 
         }
         public IActionResult FalseDetails(string p, int id, int page = 1)
         {
-            if (string.IsNullOrEmpty(p))
+            var usermail = User.Identity.Name;
+            var validation = adminManager.GetListAllService(x => x.AdminName == usermail).Select(x => x.Roles).FirstOrDefault();
+            if (validation == "Admin")
             {
-                var values = orderManager.GetListAllWithProductService(x => x.UserID == id).Where(x => x.OrderStatus == false).ToPagedList(page, 5);
-                return View(values);
+                if (string.IsNullOrEmpty(p))
+                {
+                    var values = orderManager.GetListAllWithProductService(x => x.UserID == id).Where(x => x.OrderStatus == false).ToPagedList(page, 5);
+                    return View(values);
+                }
+                else
+                {
+                    var values = orderManager.GetListAllWithProductService(x => x.UserID == id).Where(x => x.Products.ProductName.Contains(p) && x.OrderStatus == false).ToPagedList(page, 5);
+                    return View(values);
+                }
             }
             else
             {
-                var values = orderManager.GetListAllWithProductService(x => x.UserID == id).Where(x => x.Products.ProductName.Contains(p) && x.OrderStatus == false).ToPagedList(page, 5);
-                return View(values);
+                return RedirectToAction("Index", "AdminLogin");
             }
+            
 
 
 

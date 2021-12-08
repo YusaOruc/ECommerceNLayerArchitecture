@@ -17,19 +17,30 @@ namespace ECommerce.Controllers
     public class AdminUserController : Controller
     {
         UserManager userManager = new UserManager(new UserDal());
+        AdminManager adminManager = new AdminManager(new AdminDal());
         [HttpGet]
         public IActionResult Index(string p,int page = 1)
         {
-            if (string.IsNullOrEmpty(p))
+            var usermail = User.Identity.Name;
+            var validation = adminManager.GetListAllService(x => x.AdminName == usermail).Select(x => x.Roles).FirstOrDefault();
+            if (validation == "Admin")
             {
-                var values = userManager.GetListAllService().ToPagedList(page, 5);
-                return View(values);
+                if (string.IsNullOrEmpty(p))
+                {
+                    var values = userManager.GetListAllService().ToPagedList(page, 5);
+                    return View(values);
+                }
+                else
+                {
+                    var values = userManager.GetListAllService(x => x.UserName.Contains(p)).ToPagedList(page, 5);
+                    return View(values);
+                }
             }
             else
             {
-                var values = userManager.GetListAllService(x=>x.UserName.Contains(p)).ToPagedList(page, 5);
-                return View(values);
+                return RedirectToAction("Index", "AdminLogin");
             }
+            
             
             
         }
@@ -37,9 +48,19 @@ namespace ECommerce.Controllers
         [HttpGet]
         public IActionResult UpdateUsers(int id)
         {
-            var values = userManager.GetByIDService(id);
-            return View(values);
+            var usermail = User.Identity.Name;
+            var validation = adminManager.GetListAllService(x => x.AdminName == usermail).Select(x => x.Roles).FirstOrDefault();
+            if (validation == "Admin")
+            {
+                var values = userManager.GetByIDService(id);
+                return View(values);
 
+            }
+            else
+            {
+                return RedirectToAction("Index", "AdminLogin");
+            }
+            
         }
         [HttpPost]
         public IActionResult UpdateUsers(User user)

@@ -13,10 +13,21 @@ namespace ECommerce.Controllers.AdminPanel
     public class AdminOrderAddressDetailsController : Controller
     {
         AddressManager addressManager = new AddressManager(new AddressDal());
+        AdminManager adminManager = new AdminManager(new AdminDal());
         public IActionResult Index(int id)
         {
-            var values = addressManager.GetByIDService(id);
-            return View(values);
+            var usermail = User.Identity.Name;
+            var validation = adminManager.GetListAllService(x => x.AdminName == usermail).Select(x => x.Roles).FirstOrDefault();
+            if (validation == "Admin")
+            {
+                var values = addressManager.GetByIDService(id);
+                return View(values);
+            }
+            else
+            {
+                return RedirectToAction("Index", "AdminLogin");
+            }
+            
         }
     }
 }

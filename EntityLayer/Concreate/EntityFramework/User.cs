@@ -15,6 +15,7 @@ namespace EntityLayer.Concreate.EntityFramework
         public string UserMail { get; set; }
         public string UserPassword { get; set; }
         public  int UserNumber { get; set; }
+        public string Roles { get; set; }
 
         //---------------İlişkiler---------------
         public List<BasketProduct> BasketProducts { get; set; }

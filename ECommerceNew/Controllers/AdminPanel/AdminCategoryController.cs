@@ -18,15 +18,36 @@ namespace ECommerce.Controllers.AdminPanel
     {
         CategoryManager categoryManager = new CategoryManager(new CategoryDal());
         ProductManager productManager = new ProductManager(new ProductDal());
+        AdminManager adminManager = new AdminManager(new AdminDal());
         public IActionResult Index(int page=1)
         {
-            var values = categoryManager.GetListAllService().ToPagedList(page,5);  
-            return View(values);
+            var usermail = User.Identity.Name;
+            var validation = adminManager.GetListAllService(x => x.AdminName == usermail).Select(x => x.Roles).FirstOrDefault();
+            if (validation == "Admin")
+            {
+                var values = categoryManager.GetListAllService().ToPagedList(page, 5);
+                return View(values);
+            }
+            else
+            {
+                return RedirectToAction("Index", "AdminLogin");
+            }
+            
         }
         [HttpGet]
         public IActionResult CategoryAdd()
         {
-            return View();
+            var usermail = User.Identity.Name;
+            var validation = adminManager.GetListAllService(x => x.AdminName == usermail).Select(x => x.Roles).FirstOrDefault();
+            if (validation == "Admin")
+            {
+               
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "AdminLogin");
+            }
         }
         [HttpPost]
         public IActionResult CategoryAdd(Category category)
@@ -69,8 +90,19 @@ namespace ECommerce.Controllers.AdminPanel
         [HttpGet]
         public IActionResult UpdateCategory(int id)
         {
-            var values = categoryManager.GetByIDService(id);
-            return View(values);
+            var usermail = User.Identity.Name;
+            var validation = adminManager.GetListAllService(x => x.AdminName == usermail).Select(x => x.Roles).FirstOrDefault();
+            if (validation == "Admin")
+            {
+
+                var values = categoryManager.GetByIDService(id);
+                return View(values);
+            }
+            else
+            {
+                return RedirectToAction("Index", "AdminLogin");
+            }
+            
         }
         [HttpPost]
         public IActionResult UpdateCategory(Category category)

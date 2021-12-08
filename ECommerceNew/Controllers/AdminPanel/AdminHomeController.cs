@@ -12,11 +12,22 @@ namespace ECommerce.Controllers.AdminPanel
     public class AdminHomeController : Controller
     {
         SliderManager sliderManager = new SliderManager(new SliderDal());
+        AdminManager adminManager = new AdminManager(new AdminDal());
         [Authorize]
         public IActionResult Index()
         {
-            var values = sliderManager.GetListAllService();
-            return View(values);
+            var usermail = User.Identity.Name;
+            var validation = adminManager.GetListAllService(x => x.AdminName == usermail).Select(x => x.Roles).FirstOrDefault();
+            if (validation == "Admin")
+            {
+                var values = sliderManager.GetListAllService();
+                return View(values);
+            }
+            else
+            {
+                return RedirectToAction("Index", "AdminLogin");
+            }
+            
         }
     }
 }
