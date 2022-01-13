@@ -11,6 +11,7 @@
                 <div class="cart__total">
                     @using (Html.BeginForm("ProfileGetDetails", "Profile", FormMethod.Post))
                     {
+                        @Html.HiddenFor(x => x.UserID,new { @class = "form-control" })
                         @Html.Label("Kullanıcı Adı")
                         @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
                         @Html.ValidationMessageFor(x => x.UserName, null, new { @class = "text-danger" })
@@ -21,7 +22,7 @@
                         <br />
                         @Html.Label("Telefon Numarası")
                         @Html.TextBoxFor(x => x.UserNumber, new { @class = "form-control", @type = "number" })
-                        @Html.ValidationMessageFor(x => x.UserNumber, null, new { @class = "text-danger"})
+                        @Html.ValidationMessageFor(x => x.UserNumber, null, new { @class = "text-danger" })
                         <br />
                         @Html.Label("Şifre")
                         @Html.TextBoxFor(x => x.UserPassword, new { @class = "form-control" })

@@ -1,20 +1,17 @@
 ﻿@model EntityLayer.Concreate.EntityFramework.Slider
+
 @{
-    ViewData["Title"] = "UpdateSlider";
+    ViewData["Title"] = "AddSlider";
     Layout = "~/Views/Shared/AdminPanelLayout.cshtml";
 }
 <div class="col-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Slider Güncelleme Formu</h4>
-            @using (Html.BeginForm("UpdateSlider", "AdminSlider", FormMethod.Post))
+            <h4 class="card-title">Slider Ekleme Formu</h4>
+            @using (Html.BeginForm("AddSlider", "AdminSlider", FormMethod.Post))
             {
 
                 <div class="form-group">
-                    @Html.HiddenFor(x => x.SliderID, new { @class = "form-control" })
-
-                    <img style="width:100%;height:500px;" src="@Model.SliderImg" alt="image" />
-                    <br />
                     <label for="exampleInputName1">Fotoğraf</label>
                     @Html.TextBoxFor(x => x.SliderImg, new { @class = "form-control" })
                     <br />

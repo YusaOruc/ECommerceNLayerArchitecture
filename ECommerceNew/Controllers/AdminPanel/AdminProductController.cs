@@ -1,7 +1,10 @@
 ﻿using BusinessLayer.Concrete;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.Concrete.EntityFramework;
+using EntityLayer.Concreate.EntityFramework;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +18,7 @@ namespace ECommerce.Controllers.AdminPanel
     {
         ProductManager productManager = new ProductManager(new ProductDal());
         AdminManager adminManager = new AdminManager(new AdminDal());
+        Context context = new Context();
         public IActionResult Index(string p,int page=1)
         {
             var usermail = User.Identity.Name;
@@ -43,6 +47,30 @@ namespace ECommerce.Controllers.AdminPanel
         {
             var values = productManager.GetByIDService(id);
             productManager.DeleteService(values);
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public IActionResult UpdateProduct(int id)
+        {
+            var data = context.Products.Include(x => x.Category).SingleOrDefault(x => x.ProductID == id);
+            var values = productManager.GetByIDService(id);
+            return View(data);
+        }
+        [HttpPost]
+        public IActionResult UpdateProduct(Product product)
+        {
+            productManager.UpdateService(product);
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public IActionResult AddProduct()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult AddProduct(Product product)
+        {
+            productManager.InsertService(product);
             return RedirectToAction("Index");
         }
     }

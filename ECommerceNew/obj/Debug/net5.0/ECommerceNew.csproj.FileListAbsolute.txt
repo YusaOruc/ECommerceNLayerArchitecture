@@ -601,3 +601,6 @@ C:\Users\Yusa\Desktop\Bitirme Projesi\ECommerceNLayerArchitecture\ECommerceNew\o
 C:\Users\Yusa\Desktop\Bitirme Projesi\ECommerceNLayerArchitecture\ECommerceNew\obj\Debug\net5.0\ref\ECommerceNew.dll
 C:\Users\Yusa\Desktop\Bitirme Projesi\ECommerceNLayerArchitecture\ECommerceNew\obj\Debug\net5.0\ECommerceNew.pdb
 C:\Users\Yusa\Desktop\Bitirme Projesi\ECommerceNLayerArchitecture\ECommerceNew\obj\Debug\net5.0\ECommerceNew.genruntimeconfig.cache
+C:\Users\Yusa\Desktop\Bitirme Projesi\ECommerceNLayerArchitecture\ECommerceNew\obj\Debug\net5.0\Razor\Views\AdminProduct\UpdateProduct.cshtml.g.cs
+C:\Users\Yusa\Desktop\Bitirme Projesi\ECommerceNLayerArchitecture\ECommerceNew\obj\Debug\net5.0\Razor\Views\AdminProduct\AddProduct.cshtml.g.cs
+C:\Users\Yusa\Desktop\Bitirme Projesi\ECommerceNLayerArchitecture\ECommerceNew\obj\Debug\net5.0\Razor\Views\AdminSlider\AddSlider.cshtml.g.cs

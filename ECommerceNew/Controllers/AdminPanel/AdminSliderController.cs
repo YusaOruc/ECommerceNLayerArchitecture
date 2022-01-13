@@ -1,6 +1,8 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concreate.EntityFramework;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -33,16 +35,7 @@ namespace ECommerce.Controllers.AdminPanel
         [HttpGet]
         public IActionResult AddSlider()
         {
-            var usermail = User.Identity.Name;
-            var validation = adminManager.GetListAllService(x => x.AdminName == usermail).Select(x => x.Roles).FirstOrDefault();
-            if (validation == "Admin")
-            {
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Index", "AdminLogin");
-            }
+            return View();
             
         }
         [HttpPost]
@@ -77,6 +70,11 @@ namespace ECommerce.Controllers.AdminPanel
         public IActionResult UpdateSlider(Slider slider)
         {
             sliderManager.UpdateService(slider);
+            return RedirectToAction("Index");
+        }
+        public async Task<IActionResult> LogOut()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Index");
         }
     }
